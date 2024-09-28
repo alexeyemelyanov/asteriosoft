@@ -6,13 +6,13 @@ import java.util.function.Function;
 
 public class SingleThreadDecoder<R, V> extends DataDecoder<R, V> {
 
-    public SingleThreadDecoder(DataReader<R> reader, Function<R, V> decoder) {
-        super(reader, decoder);
-    }
+  public SingleThreadDecoder(DataReader<R> reader, Function<R, V> decoder) {
+    super(reader, decoder);
+  }
 
-    @Override
-    public V read() {
-        R record = readRecord();
-        return record == null ? null : decodeRecord(record);
-    }
+  @Override
+  public V read() {
+    R record = readRecord();
+    return record == null ? null : decodeRecord(record);
+  }
 }
