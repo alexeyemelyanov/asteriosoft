@@ -1,8 +1,7 @@
 package ly.persona.academic.data.decoder;
 
-import ly.persona.academic.data.DataReader;
-
 import java.util.function.Function;
+import ly.persona.academic.data.DataReader;
 
 public abstract class DataDecoder<R, V> implements DataReader<V> {
 
