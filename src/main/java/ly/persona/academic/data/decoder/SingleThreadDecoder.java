@@ -9,9 +9,15 @@ public class SingleThreadDecoder<R, V> extends DataDecoder<R, V> {
     super(reader, decoder);
   }
 
+  /**
+   * Reads and decodes in the calling thread. Not thread safe: concurrent calls are as safe as the
+   * underlying reader is.
+   *
+   * @throws IllegalStateException if the decoder is already closed
+   */
   @Override
   public V read() {
-    R record = readRecord();
-    return record == null ? null : decodeRecord(record);
+    checkNotClosed();
+    return decodeRecord(readRecord());
   }
 }
